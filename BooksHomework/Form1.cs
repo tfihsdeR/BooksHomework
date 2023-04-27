@@ -22,16 +22,24 @@ namespace BooksHomework
             await LoadForm();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
-            //List<Book> machedBooks = books.Where(b => b.Name.Equals(txtBoxSearch.Text,StringComparison.OrdinalIgnoreCase)).ToList();
-            List<Book> matchedBooks = books.Where(b => b.Name.Contains(txtBoxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
+            await Task.Run(() =>
+            {
+                List<Book> matchedBooks = books.Where(b => b.Name.Contains(txtBoxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
                 b.Title.Contains(txtBoxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
                 b.Surname.Contains(txtBoxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
                 b.Title.Contains(txtBoxSearch.Text, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            matchedBooks = matchedBooks.Distinct().ToList();
-            dataGridView1.DataSource = matchedBooks;
+                matchedBooks = matchedBooks.Distinct().ToList();
+                //dataGridView1.DataSource = matchedBooks;
+
+                dataGridView1.Invoke((MethodInvoker)delegate
+                {
+                    dataGridView1.DataSource = matchedBooks;
+                    lblDisplayed.Text = matchedBooks.Count.ToString();
+                });
+            });
         }
 
         private async Task LoadForm()
@@ -77,6 +85,8 @@ namespace BooksHomework
                         dataGridView1.DataSource = books;
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         AcceptButton = btnSearch;
+
+                        lblDisplayed.Text = books.Count().ToString();
                     });
                 }
             });

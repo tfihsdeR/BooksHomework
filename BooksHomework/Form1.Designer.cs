@@ -31,6 +31,8 @@
             txtBoxSearch = new TextBox();
             dataGridView1 = new DataGridView();
             btnSearch = new Button();
+            label1 = new Label();
+            lblDisplayed = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -63,16 +65,39 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(57, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Displayed Total of";
+            // 
+            // lblDisplayed
+            // 
+            lblDisplayed.AutoSize = true;
+            lblDisplayed.BackColor = SystemColors.ActiveBorder;
+            lblDisplayed.BorderStyle = BorderStyle.FixedSingle;
+            lblDisplayed.Location = new Point(163, 20);
+            lblDisplayed.Name = "lblDisplayed";
+            lblDisplayed.Size = new Size(15, 17);
+            lblDisplayed.TabIndex = 6;
+            lblDisplayed.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(798, 421);
+            Controls.Add(lblDisplayed);
+            Controls.Add(label1);
             Controls.Add(txtBoxSearch);
             Controls.Add(dataGridView1);
             Controls.Add(btnSearch);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Books";
             Load += Form1_LoadAsync;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -84,5 +109,7 @@
         private TextBox txtBoxSearch;
         private DataGridView dataGridView1;
         private Button btnSearch;
+        private Label label1;
+        private Label lblDisplayed;
     }
 }
