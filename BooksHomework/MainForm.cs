@@ -53,6 +53,7 @@ namespace BooksHomework
             //dataGridView1.Refresh();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = books;
+            lblDisplayed.Text = books.Count.ToString();
         }
 
         private async Task LoadForm()
@@ -102,16 +103,26 @@ namespace BooksHomework
                         AcceptButton = btnSearch;
 
                         lblDisplayed.Text = books.Count().ToString();
+                        lblInfo.Visible = false;
                     });
                 }
             });
         }
 
-        public void UpdateDataGridView(List<Book> books)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (books.Count != 0)
+            int currentItem = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            Book book = books.FirstOrDefault(b => b.Id == currentItem);
+            if (book != null)
             {
-                this.dataGridView1.DataSource = books;
+                var comfirmResult = MessageBox.Show($"Are you sure to delete the item of ID: {currentItem} ?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (comfirmResult == DialogResult.Yes)
+                {
+                    books.Remove(book);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = books;
+                    lblDisplayed.Text = books.Count().ToString();
+                }
             }
         }
     }

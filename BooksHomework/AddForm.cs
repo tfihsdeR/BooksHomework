@@ -30,6 +30,7 @@ namespace BooksHomework
                 book.Name = txtBoxName.Text.Trim();
                 book.Surname = txtBoxSurname.Text.Trim();
                 book.Title = txtBoxTitle.Text.Trim();
+                book.Id = mainForm.books.Count + 1;
 
                 Writer writer = new Writer();
                 writer.Name = txtBoxName.Text.Trim();

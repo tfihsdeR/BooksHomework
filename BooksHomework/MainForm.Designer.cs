@@ -37,6 +37,7 @@
             btnDelete = new Button();
             btnModify = new Button();
             btnRefresh = new Button();
+            lblInfo = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -72,9 +73,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(55, 20);
             label1.Name = "label1";
-            label1.Size = new Size(100, 15);
+            label1.Size = new Size(132, 21);
             label1.TabIndex = 6;
             label1.Text = "Displayed Total of";
             // 
@@ -83,9 +85,10 @@
             lblDisplayed.AutoSize = true;
             lblDisplayed.BackColor = SystemColors.ActiveBorder;
             lblDisplayed.BorderStyle = BorderStyle.FixedSingle;
-            lblDisplayed.Location = new Point(161, 20);
+            lblDisplayed.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDisplayed.Location = new Point(193, 17);
             lblDisplayed.Name = "lblDisplayed";
-            lblDisplayed.Size = new Size(15, 17);
+            lblDisplayed.Size = new Size(24, 27);
             lblDisplayed.TabIndex = 6;
             lblDisplayed.Text = "0";
             // 
@@ -109,6 +112,7 @@
             btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete Book";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
@@ -131,12 +135,23 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // lblInfo
+            // 
+            lblInfo.AutoSize = true;
+            lblInfo.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInfo.Location = new Point(77, 192);
+            lblInfo.Name = "lblInfo";
+            lblInfo.Size = new Size(635, 37);
+            lblInfo.TabIndex = 9;
+            lblInfo.Text = "Please wait a few seconds. The data will be updated.";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(903, 418);
+            Controls.Add(lblInfo);
             Controls.Add(btnRefresh);
             Controls.Add(btnModify);
             Controls.Add(btnDelete);
@@ -165,5 +180,6 @@
         private Button btnDelete;
         private Button btnModify;
         private Button btnRefresh;
+        private Label lblInfo;
     }
 }
