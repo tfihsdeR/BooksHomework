@@ -1,6 +1,6 @@
 ﻿namespace BooksHomework
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -33,6 +33,10 @@
             btnSearch = new Button();
             label1 = new Label();
             lblDisplayed = new Label();
+            btnAdd = new Button();
+            btnDelete = new Button();
+            btnModify = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +45,7 @@
             txtBoxSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBoxSearch.Location = new Point(55, 53);
             txtBoxSearch.Name = "txtBoxSearch";
-            txtBoxSearch.Size = new Size(502, 23);
+            txtBoxSearch.Size = new Size(514, 23);
             txtBoxSearch.TabIndex = 5;
             // 
             // dataGridView1
@@ -51,13 +55,13 @@
             dataGridView1.Location = new Point(55, 81);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(671, 287);
+            dataGridView1.Size = new Size(685, 284);
             dataGridView1.TabIndex = 4;
             // 
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.Location = new Point(594, 52);
+            btnSearch.Location = new Point(608, 53);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(132, 23);
             btnSearch.TabIndex = 3;
@@ -68,7 +72,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(57, 20);
+            label1.Location = new Point(55, 20);
             label1.Name = "label1";
             label1.Size = new Size(100, 15);
             label1.TabIndex = 6;
@@ -79,24 +83,69 @@
             lblDisplayed.AutoSize = true;
             lblDisplayed.BackColor = SystemColors.ActiveBorder;
             lblDisplayed.BorderStyle = BorderStyle.FixedSingle;
-            lblDisplayed.Location = new Point(163, 20);
+            lblDisplayed.Location = new Point(161, 20);
             lblDisplayed.Name = "lblDisplayed";
             lblDisplayed.Size = new Size(15, 17);
             lblDisplayed.TabIndex = 6;
             lblDisplayed.Text = "0";
             // 
-            // Form1
+            // btnAdd
+            // 
+            btnAdd.Anchor = AnchorStyles.Right;
+            btnAdd.Location = new Point(774, 235);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(99, 23);
+            btnAdd.TabIndex = 7;
+            btnAdd.Text = "Add Book";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Right;
+            btnDelete.Location = new Point(774, 275);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(99, 23);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "Delete Book";
+            btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnModify
+            // 
+            btnModify.Anchor = AnchorStyles.Right;
+            btnModify.Location = new Point(774, 314);
+            btnModify.Name = "btnModify";
+            btnModify.Size = new Size(99, 23);
+            btnModify.TabIndex = 7;
+            btnModify.Text = "Modify";
+            btnModify.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(774, 146);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(99, 50);
+            btnRefresh.TabIndex = 8;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(798, 421);
+            ClientSize = new Size(903, 418);
+            Controls.Add(btnRefresh);
+            Controls.Add(btnModify);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
             Controls.Add(lblDisplayed);
             Controls.Add(label1);
             Controls.Add(txtBoxSearch);
             Controls.Add(dataGridView1);
             Controls.Add(btnSearch);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Books";
             Load += Form1_LoadAsync;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -111,5 +160,9 @@
         private Button btnSearch;
         private Label label1;
         private Label lblDisplayed;
+        private Button btnAdd;
+        private Button btnDelete;
+        private Button btnModify;
+        private Button btnRefresh;
     }
 }

@@ -6,12 +6,13 @@ using Repository.Model;
 
 namespace BooksHomework
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         IWebDriver driver = null;
-        List<Book> books = new List<Book>();
+        public List<Book> books = new List<Book>();
+        public List<Writer> writers = new List<Writer>();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -40,6 +41,19 @@ namespace BooksHomework
                     lblDisplayed.Text = matchedBooks.Count.ToString();
                 });
             });
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new AddForm();
+            addForm.Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.Refresh();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = books;
         }
 
         private async Task LoadForm()
@@ -74,7 +88,9 @@ namespace BooksHomework
                         name = name.TrimEnd(' ');
                         surname = nameSurname[nameSurname.Length - 1];
 
+                        // Update the Books and Writers
                         books.Add(new Book { Id = id, Name = name, Surname = surname, Title = title });
+                        writers.Add(new Writer { Name = name, Surname = surname });
                     }
                 }
 
@@ -90,6 +106,14 @@ namespace BooksHomework
                     });
                 }
             });
+        }
+
+        public void UpdateDataGridView(List<Book> books)
+        {
+            if (books.Count != 0)
+            {
+                this.dataGridView1.DataSource = books;
+            }
         }
     }
 }
