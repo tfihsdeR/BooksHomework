@@ -1,13 +1,20 @@
 ﻿using Repository.Model;
-using System.Windows.Forms;
 
 namespace BooksHomework
 {
     public partial class AddForm : Form
     {
+        private MainForm mainForm;
+
         public AddForm()
         {
             InitializeComponent();
+        }
+
+        public AddForm(MainForm mainForm)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void AddForm_Load(object sender, EventArgs e)
@@ -19,10 +26,6 @@ namespace BooksHomework
         {
             await Task.Run(() =>
             {
-                MainForm mainForm = new MainForm();
-                List<Book> books = mainForm.books;
-                List<Writer> writers = mainForm.writers;
-
                 Book book = new Book();
                 book.Name = txtBoxName.Text.Trim();
                 book.Surname = txtBoxSurname.Text.Trim();
@@ -32,19 +35,17 @@ namespace BooksHomework
                 writer.Name = txtBoxName.Text.Trim();
                 writer.Surname = txtBoxSurname.Text.Trim();
 
-                if (books.Any(b => b.Name == book.Name && b.Surname == book.Surname && b.Title == book.Title))
+                if (mainForm.books.Any(b => b.Name == book.Name && b.Surname == book.Surname && b.Title == book.Title))
                     MessageBox.Show("There is a same book with the same writer in the directory.");
                 else
                 {
-                    books.Add(book);
+                    mainForm.books.Add(book);
                     MessageBox.Show("New book has been added.");
                 }
-                if (!writers.Any(w => w.Name == writer.Name && w.Surname == writer.Surname))
+                if (!mainForm.writers.Any(w => w.Name == writer.Name && w.Surname == writer.Surname))
                 {
-                    writers.Add(writer);
+                    mainForm.writers.Add(writer);
                 }
-
-                mainForm.UpdateDataGridView(books);
             });
         }
 

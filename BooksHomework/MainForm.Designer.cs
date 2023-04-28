@@ -122,6 +122,7 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.Anchor = AnchorStyles.Right;
             btnRefresh.Location = new Point(774, 146);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(99, 50);

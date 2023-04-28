@@ -8,7 +8,6 @@ namespace BooksHomework
 {
     public partial class MainForm : Form
     {
-        IWebDriver driver = null;
         public List<Book> books = new List<Book>();
         public List<Writer> writers = new List<Writer>();
 
@@ -45,7 +44,7 @@ namespace BooksHomework
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
+            AddForm addForm = new AddForm(this);
             addForm.Show();
         }
 
