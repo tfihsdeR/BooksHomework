@@ -123,6 +123,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AddForm";
             Text = "Form2";
+            Load += AddForm_Load_1;
             Resize += AddForm_Load;
             ResumeLayout(false);
             PerformLayout();

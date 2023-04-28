@@ -56,6 +56,37 @@ namespace BooksHomework
             lblDisplayed.Text = books.Count.ToString();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int currentItem = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            Book book = books.FirstOrDefault(b => b.Id == currentItem);
+            if (book != null)
+            {
+                var comfirmResult = MessageBox.Show($"Are you sure to delete the item of ID: {currentItem} ?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (comfirmResult == DialogResult.Yes)
+                {
+                    books.Remove(book);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = books;
+                    lblDisplayed.Text = books.Count().ToString();
+                }
+            }
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                Book book = new Book();
+                book.Title = dataGridView1.CurrentRow.Cells["Title"].Value.ToString();
+                book.Name = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+                book.Surname = dataGridView1.CurrentRow.Cells["Surname"].Value.ToString();
+                book.Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value.ToString());
+                AddForm addForm = new AddForm(this, book);
+                addForm.Show();
+            }
+        }
+
         private async Task LoadForm()
         {
             await Task.Run(async () =>
@@ -109,21 +140,5 @@ namespace BooksHomework
             });
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int currentItem = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            Book book = books.FirstOrDefault(b => b.Id == currentItem);
-            if (book != null)
-            {
-                var comfirmResult = MessageBox.Show($"Are you sure to delete the item of ID: {currentItem} ?", "Confirm Delete", MessageBoxButtons.YesNo);
-                if (comfirmResult == DialogResult.Yes)
-                {
-                    books.Remove(book);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = books;
-                    lblDisplayed.Text = books.Count().ToString();
-                }
-            }
-        }
     }
 }

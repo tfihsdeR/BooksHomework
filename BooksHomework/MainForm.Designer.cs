@@ -123,6 +123,7 @@
             btnModify.TabIndex = 7;
             btnModify.Text = "Modify";
             btnModify.UseVisualStyleBackColor = true;
+            btnModify.Click += btnModify_Click;
             // 
             // btnRefresh
             // 
